@@ -1,14 +1,13 @@
 import { expect } from 'chai';
 
-const puppeteer = require('puppeteer');
+import puppeteer from 'puppeteer';
 
-describe('Hello function', () => {
-  it('should return hello world', async (done) => {
-    const browser = await puppeteer.launch();
-    // const page = await browser.newPage();
-    // await page.goto('https://example.com');
-    // await page.screenshot({ path: 'example.png' });
-
-    return browser.close();
+describe('Puppeteer API', () => {
+  it('get informations about browser', () => {
+    return puppeteer.launch().then(async (browser) => {
+      console.log(await browser.version());
+      console.log(await browser.wsEndpoint());
+      browser.close();
+    });
   });
 });
